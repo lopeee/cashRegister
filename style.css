@@ -1,0 +1,103 @@
+html {
+  color-scheme: dark;
+  font-family: system-ui;
+}
+
+body {
+  font-family: monospace;
+  font-size: 14px;
+  color: rgb(183, 181, 181);
+  margin-top: 20px;
+  margin-left: 80px;
+}
+label {
+  text-align: center;
+  font-size: 12px;
+}
+
+label:hover {
+  color: white;
+  cursor: pointer;
+}
+ul {
+  margin: 3px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  vertical-align: middle;
+  margin: 5px;
+}
+
+div#input,
+div#button,
+div#radio_selectDistribution,
+div#chkbx_selectAsset {
+  position: fixed;
+}
+div#input {
+  left: 80px;
+  top: 50px;
+  width: 100px;
+}
+div#button {
+  left: 80px;
+  top: 115px;
+  width: 100px;
+}
+div#radio_selectDistribution {
+  left: 80px;
+  top: 175px;
+  width: 100px;
+  padding: 5px;
+  border: 1px solid;
+  border-radius: 5px;
+}
+div#chkbx_selectAsset {
+  left: 80px;
+  top: 270px;
+  width: 100px;
+  padding: 5px;
+  border: 1px solid;
+  border-radius: 5px;
+}
+div#output {
+  margin-top: 130px;
+  margin-left: 200px;
+  position: relative;
+  bottom: 20px;
+}
+
+#input_startValue {
+  width: 100px;
+  height: 30px;
+  border-style: solid;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #494848;
+  border-color: #494848;
+  width: 108px;
+  height: 30px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 4px;
+}
+
+button:hover {
+  cursor: pointer;
+  border-color: turquoise;
+  color: turquoise;
+}
+
+ul {
+  list-style: none;
+  margin-top: 5px;
+  padding-left: 0px;
+}
+
+i,
+b {
+  color: white;
+}

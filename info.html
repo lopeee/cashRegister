@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mi.cashregister_info</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Info</h1>
+    <hr color="gray" size="10px" />
+    <hr color="gray" size="1px" />
+    <h2>Bedienung</h2>
+    <br />
+    <p><i>Seite neu laden</i>...Programm startet neu -> Achtung: alle Daten gehen verloren !!</p>
+    <br />
+    <hr color="gray" width="250px" size="1px" />
+    <br />
+    <h3>Buchung</h3>
+    <p><i>Einlage</i> ... Ganzahl(z.B. 10) oder Fließkommazahl(z.B. 12,33)</p>
+    <p><i>Entnahme</i> ... Minus Ganzahl(z.B. -10) oder Fließkommazahl(z.B. -175,23)</p>
+    <br />
+    <hr color="gray" width="250px" size="1px" />
+    <br />
+    <h3>Befehle</h3>
+    <p>
+      Hiermit können Buchungen der einzelnen Assets in gewünschter Stückelung vorgenommen werden.
+      Wird ein Asset angegeben, welches nicht vorhanden ist, gilt die Eingabe als fehlerhaft.
+    </p>
+    <br />
+    <p>
+      <i>+p[Wert]a[Wert]</i> ... Einzahlung pieces [Ganzzahl] asset [Ganzzahl oder Fließkommazahl]
+      <br />
+      Beispiel: +p10a0.5 ... Einzahlung 10Stk 50cent
+    </p>
+    <p>
+      <i>-p[Wert]a[Wert]</i> ... Entnahme pieces [Ganzzahl] asset [Ganzzahl oder Fließkommazahl]
+      <br />
+      Beispiel: -p5a20 ... Entnahme 5Stk 20€
+    </p>
+    <br />
+    <br />
+    <hr color="gray" size="2px" />
+    <h2>Einstellungen</h2>
+    <br />
+    <h3>Verteilung</h3>
+    <p>
+      Bei der Einlage kann zwischen zwei Verteilungsvarianten ausgewählt werden, bei der Entnahme
+      wird immer die sortierte Verteilung angewendet, egal welches Verfahren gewählt wurde.
+    </p>
+    <br />
+
+    <p>
+      <i>zufällig</i>...der eingegebene Betrag wird zufällig nach dem beschriebenen
+      Verteilungsschlüssel (siehe unten) aufgeteilt und in die Kasse eingelegt...dies ist die
+      Standardeinstellung
+    </p>
+    <p>
+      <i>sortiert</i>... der eingegebene Betrag wird in sortierter Form in die Kasse
+      eingelegt/entnommen, vom größtmöglichen asset ausgehend z.B. 37€ -> 1 Stck 20€ / 1 Stck 10€ /
+      1 Stck 5€ / 1 Stck 2€
+    </p>
+    <br />
+    <hr color="gray" width="250px" size="1px" />
+    <br />
+    <h3>Assets</h3>
+    <p>
+      Über die Checkboxen können die Assets ausgewählt werden, welche in der Kasse in Verwendung
+      sein sollen. Wird allerdings während einer Buchungsserie die Auswahl verändert, dann werden
+      vorher beteiligte, aber jetzt abgewählte Assets nicht mehr gebucht, aber in der Kasse
+      bestehende Assets bleiben erhalten.
+    </p>
+    <br />
+
+    <p>
+      <b>Achtung: </b>... Wenn ein Betrag eingegeben wird, der mittels der ausgewählten Assets nicht
+      aufzulösen ist, wird der nächstmögliche Betrag ermittelt. Eine mögliche Buchung wird mittels
+      einer MessageBox abgefragt.
+    </p>
+    <br />
+    <hr color="gray" size="5px" />
+    <h2>Verteilungsschlüssel</h2>
+    <br />
+    <p>
+      Auflistung der Verteilung von Banknoten und Münzen, unterteilt in Anzahl(Stück), Wert(€) und
+      Prozent.
+    </p>
+    <p>
+      Die Banknoten für 500€ und 200€ wurden für die Simulation nicht verwendet. Der untenstehende
+      Verteilungsschlüssel zeigt nicht den Gesamtschlüssel für alle Assets zusammengenommen, welcher
+      im Programm verwendet wird.
+    </p>
+    <br />
+    <hr color="gray" width="250px" size="1px" />
+    <br />
+    <p>dataSource:</p>
+    <p>
+      https://www.ecb.europa.eu/stats/policy_and_exchange_rates/banknotes+coins/circulation/html/index.de.html
+      <br />
+      https://www.oenb.at/Bargeld/der-euro/Bargeldumlauf.html
+    </p>
+    <br />
+    <hr color="gray" width="250px" size="1px" />
+    <br />
+    <p>coins: jan_2022</p>
+    <p>
+      &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;quantity (pieces)&emsp; value
+      (€)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; percent
+      <br />
+      ----------------------------------------------------------------- <br />
+      total&emsp;&emsp;141.184.192.506&emsp;&emsp;&emsp; 31.188.364.128 &emsp;&emsp;100 <br />
+
+      0,01&emsp;&emsp; 38.125.482.471&emsp;&emsp;&emsp;&emsp;
+      381.254.825&emsp;&emsp;&emsp;&emsp;&emsp; 27,0041
+      <br />
+      0,02&emsp;&emsp; 29.674.873.920&emsp;&emsp;&emsp;&emsp; 593.497.478&emsp;&emsp;&emsp;&emsp;
+      &emsp;21,0186 <br />
+      0,05&emsp;&emsp; 23.039.207.050&emsp;&emsp;&emsp;&emsp; 1.151.960.353&emsp;&emsp;&emsp;
+      16,3185
+      <br />
+      0,10&emsp;&emsp; 16.233.464.649&emsp;&emsp;&emsp;&emsp; 1.623.346.465&emsp;&emsp;&emsp;
+      11,4981
+      <br />
+      0,20&emsp;&emsp; 12.709.072.744&emsp;&emsp;&emsp;&emsp; 2.541.814.549&emsp;&emsp;&emsp; 9,0018
+      <br />
+      0,50&emsp;&emsp; 6.692.608.008&emsp;&emsp;&emsp;&emsp;&emsp; 3.346.304.004&emsp;&emsp;&emsp;
+      4,7403
+      <br />
+      1,00&emsp;&emsp; 7.735.072.079&emsp;&emsp;&emsp;&emsp;&emsp; 7.735.072.079&emsp;&emsp;&emsp;
+      5,4787
+      <br />
+      2,00&emsp;&emsp; 6.907.557.188&emsp;&emsp;&emsp;&emsp;&emsp; 13.815.114.376&emsp;&emsp; 4,8926
+      <br />
+    </p>
+    <br />
+    <hr color="gray" width="250px" size="1px" />
+    <br />
+    <p>banknotes: jan_2022</p>
+    <p>
+      &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;quantity (pieces)&emsp; value
+      (€)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; percent
+      <br />
+      ----------------------------------------------------------------- <br />
+      total&emsp;&emsp;27.896.174.200&emsp;&emsp;&emsp; 1.539.487.022.410 &emsp;&emsp;100 <br />
+
+      500&emsp;&emsp;&emsp; 370.981.496&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+      185.490.748.000&emsp;&emsp;&emsp;&emsp; 2,7
+      <br />
+      200&emsp;&emsp;&emsp; 884.146.705&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+      176.829.341.000&emsp;&emsp;&emsp;&emsp;&emsp;1,2 <br />
+      100&emsp;&emsp;&emsp; 3.686.797.951&emsp;&emsp;&emsp;&emsp;
+      368.679.795.100&emsp;&emsp;&emsp;&emsp; 12,3
+      <br />
+      50&emsp;&emsp;&emsp;&emsp; 13.593.232.648&emsp;&emsp;&emsp;
+      679.661.632.400&emsp;&emsp;&emsp;&emsp; 46,0
+      <br />
+      20&emsp;&emsp;&emsp;&emsp; 4.528.467.889&emsp;&emsp;&emsp;&emsp;
+      90.569.357.780&emsp;&emsp;&emsp;&emsp;&emsp; 17,3
+      <br />
+      10&emsp;&emsp;&emsp;&emsp; 2.818.682.115&emsp;&emsp;&emsp;&emsp;
+      28.115.655.950&emsp;&emsp;&emsp;&emsp;&emsp; 11,6
+      <br />
+      5&emsp;&emsp;&emsp;&emsp;&emsp; 2.013.865.396&emsp;&emsp;&emsp;&emsp;
+      10.069.326.980&emsp;&emsp;&emsp;&emsp;&emsp; 8,9
+      <br />
+    </p>
+    <br />
+    <hr color="gray" width="650px" size="1px" />
+    <div id="info_text"></div>
+  </body>
+</html>
