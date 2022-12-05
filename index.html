@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mi.cashregister.ts</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="title">
+      <p>reuland studios&reg;</p>
+    </div>
+    <div id="input">
+      <input id="input_startValue" />
+    </div>
+    <div id="button">
+      <a id="button_info" href="info.html" target="_blank"><button>info</button></a>
+    </div>
+    <div id="radio_selectDistribution">
+      <ul>
+        <li>
+          <input id="radio_random" type="radio" name="radio_distrib" style="margin-top: 3px" />
+          <label for="radio_random">zufällig</label>
+        </li>
+        <li>
+          <input id="radio_sorted" type="radio" name="radio_distrib" style="margin-top: 3px" />
+          <label for="radio_sorted">soriert</label>
+        </li>
+      </ul>
+    </div>
+    <div id="chkbx_selectAsset">
+      <ul>
+        <li>
+          <input type="checkbox" id="chkbx_100" name="selectAsset" value="100" />
+          <label for="chkbx_100">100€</label>
+        </li>
+        <li>
+          <input type="checkbox" id="chkbx_50" name="selectAsset" value="50" />
+          <label for="chkbx_50">50€</label>
+        </li>
+        <li>
+          <input type="checkbox" id="chkbx_20" name="selectAsset" value="20" />
+          <label for="chkbx_20">20€</label>
+        </li>
+        <li>
+          <input type="checkbox" id="chkbx_10" name="selectAsset" value="10" />
+          <label for="chkbx_10">10€</label>
+        </li>
+        <li>
+          <input type="checkbox" id="chkbx_5" name="selectAsset" value="5" />
+          <label for="chkbx_5">5€</label>
+        </li>
+        <li>
+          <input type="checkbox" id="chkbx_2" name="selectAsset" value="2" />
+          <label for="chkbx_2">2€</label>
+        </li>
+        <li>
+          <input type="checkbox" id="chkbx_1" name="selectAsset" value="1" />
+          <label for="chkbx_1">1€</label>
+        </li>
+        <li>
+          <input type="checkbox" id="chkbx_05" name="selectAsset" value="0.5" />
+          <label for="chkbx_05">0.5€</label>
+        </li>
+        <li>
+          <input type="checkbox" id="chkbx_02" name="selectAsset" value="0.2" />
+          <label for="chkbx_02">0.2€</label>
+        </li>
+        <li>
+          <input type="checkbox" id="chkbx_01" name="selectAsset" value="0.1" />
+          <label for="chkbx_01">0.1€</label>
+        </li>
+        <li>
+          <input type="checkbox" id="chkbx_005" name="selectAsset" value="0.05" />
+          <label for="chkbx_005">0.05€</label>
+        </li>
+        <li>
+          <input type="checkbox" id="chkbx_002" name="selectAsset" value="0.02" />
+          <label for="chkbx_002">0.02€</label>
+        </li>
+        <li>
+          <input type="checkbox" id="chkbx_001" name="selectAsset" value="0.01" />
+          <label for="chkbx_001">0.01€</label>
+        </li>
+      </ul>
+    </div>
+    <div id="output"></div>
+
+    <script src="globals.js"></script>
+    <script src="coreAlgo.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
