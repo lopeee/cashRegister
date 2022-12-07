@@ -16,9 +16,9 @@ var assetDistributionList = [
     Object.freeze({ value: 0.01, distribution: 0.537 }),
 ];
 /////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////    sorted distribution plus   //////////////////////////////
+////////////////////////////    sorted distribution   ///////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////
-function sortedDistributionPositive(inVal) {
+function sortedDistribution(inVal) {
     /**
      * taking the inVal and cut it into pieces of the assets which are listed in the
      * assetDistributionList array...
@@ -26,25 +26,35 @@ function sortedDistributionPositive(inVal) {
      * the selection uses the logic:'from highest to lowest'
      * for example: 250€ -> 2 pieces of asset 100€, 1 piece of asset 50€
      *
+     * if not all assets are in use (see checkboxes), the process goes on as far as
+     * possible, also from highest available asset to lowest available asset...
+     *
      * the results get stored in the assets array, which we return to the calling
      * function...
      *
+     * parameters:
+     *    inVal            inputValue   string        the value to get separated in different assets
+     *
      * variables:
-     * assets           assets       array         the num of  different assets we calculated for the amount
-     * amo              amount       number        the amount we calculate the assets from
-     * res              result       number        intermediate result
+     *    assets           assets       []number      the num of  different assets we calculated for the amount
+     *    amo              amount       number        the amount we calculate the assets from
+     *    res              result       number        intermediate result
+     *
+     * return:
+     *    assets           assets       []number      see above...
      */
     var assets = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    var amo = parseFloat(inVal);
+    var amo = Math.abs(parseFloat(inVal));
     var res = 0;
     // searching for the assets...
     for (var i = 0; i < assetDistributionList.length; i++) {
-        res = Math.abs(amo / assetDistributionList[i].value);
         if (checkboxes[i].checked) {
+            res = Math.abs(amo / assetDistributionList[i].value);
             if (res < 1) {
                 assets[i] = 0;
+                // positive booking
             }
-            else if (res >= 1) {
+            else if (res >= 1 && parseFloat(inVal) > 0) {
                 assets[i] = Math.floor(res);
                 amo =
                     ((res - Math.floor(res)) * assetDistributionList[i].value) %
@@ -54,41 +64,8 @@ function sortedDistributionPositive(inVal) {
                 }
                 amo = parseFloat(amo.toFixed(2));
             }
-        }
-    }
-    return assets;
-}
-/////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////    sorted distribution minus  //////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////
-function sortedDistributionNegative(inVal) {
-    /**
-     * taking the inVal and cut it into pieces of the assets which are listed in the
-     * assetDistributionList array...
-     *
-     * the selection uses the logic:'from highest to lowest'
-     * for example: 250€ -> 2 pieces of asset 100€, 1 piece of asset 50€
-     *
-     * the results get stored in the assets array, which we return to the calling
-     * function...
-     *
-     * variables:
-     * assets           assets       array         the num of  different assets we calculated for the amount
-     * amo              amount       number        the amount we calculate the assets from
-     * res              result       number        intermediate result
-     */
-    var assets = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    var amo = Math.abs(parseFloat(inVal));
-    var res = 0;
-    // searching for the assets...
-    for (var i = 0; i < assetDistributionList.length; i++) {
-        if (checkboxes[i].checked && totalCashRegisterData[i].assetTotal > 0) {
-            res = Math.abs(amo / assetDistributionList[i].value);
-            if (res < 1) {
-                assets[i] = 0;
-                continue;
-            }
-            else if (res >= 1) {
+            // negative booking
+            else if (res >= 1 && parseFloat(inVal) < 0) {
                 if (totalCashRegisterData[i].assetTotal - res < 0) {
                     assets[i] = totalCashRegisterData[i].assetTotal;
                     amo = amo - totalCashRegisterData[i].assetTotal * totalCashRegisterData[i].asset;
@@ -118,18 +95,19 @@ function randDistrib(inVal) {
      * the results get stored in the assets array, which we return to the calling
      * function...
      *
-     * parameters:      meaning               type
-     * inVal            inputValue            string        new amount(userInput) to book into cashRegister
+     * parameters:              meaning               type
+     *    inVal                 inputValue            string        the value to get separated in different assets
      *
-     * variables:       meaning               type
-     * assets           assets                array         the num of  different assets we calculated for the amount
-     * amo              amount                number        the amount we calculate the assets from
-     * xArray           ...                   arrayObject   the workArray to manipulate and shuffle our data
-     * randomDistrib    randomDistribution    number        a random generated value we use to find the right probabilityZone
-     * asset            asset                 number        the asset we selected
+     * variables:               meaning               type
+     *    assets                assets                []array       the num of  different assets we calculated for the amount
+     *    amo                   amount                number        the amount we calculate the assets from
+     *    smallestCheckedAsset  ...                   number        quit condition of the whileLoop
+     *    xArray                ...                   []object      the workArray to manipulate and shuffle our data
+     *    randomDistrib         randomDistribution    number        a random generated value we use to find the right probabilityZone
+     *    asset                 asset                 number        the asset we selected
      *
      * return:
-     * assets           ...                   arrayNumber   see above...
+     *    assets                ...                   []Number      see above...
      */
     var assets = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     var amo = Math.abs(parseFloat(inVal));
@@ -255,7 +233,7 @@ function setProbZones(inArray) {
     /**
      * calculate new values for all distributions, so we get zones of probabilities
      * last index set to 100, cause last value is the sum of all values (there are always some rounding differences,
-     * which causing sometimes an error when getAsset and there is only an index 0...)
+     * which causing sometimes an error when calling function 'getAsset' and there is only an index 0...)
      */
     for (var i = 1; i < inArray.length; i++) {
         inArray[i].distribution += inArray[i - 1].distribution;

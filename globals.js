@@ -1,19 +1,20 @@
-const input = document.getElementById("input_startValue");
-const out = document.getElementById("output");
-const radioRandom = document.getElementById("radio_random");
-const radioSort = document.getElementById("radio_sorted");
-const checkboxes = document.getElementsByName("selectAsset");
+"use strict";
 
-let totalAmountCashRegister = 0;
-let lastInputAmount = 0;
-let totalCashRegisterData = [
+var input = document.getElementById("input_startValue");
+var out = document.getElementById("output");
+var radioRandom = document.getElementById("radio_random");
+var radioSort = document.getElementById("radio_sorted");
+var checkboxes = document.getElementsByName("selectAsset");
+var totalAmountCashRegister = 0;
+var lastInputAmount = 0;
+var totalCashRegisterData = [
     {
         ID: 0,
         asset: 100,
         assetTotal: 0,
         amountTotal: 0,
         assetLast: 0,
-        amountLast: 0,
+        amountLast: 0
     },
     {
         ID: 1,
@@ -21,7 +22,7 @@ let totalCashRegisterData = [
         assetTotal: 0,
         amountTotal: 0,
         assetLast: 0,
-        amountLast: 0,
+        amountLast: 0
     },
     {
         ID: 2,
@@ -29,7 +30,7 @@ let totalCashRegisterData = [
         assetTotal: 0,
         amountTotal: 0,
         assetLast: 0,
-        amountLast: 0,
+        amountLast: 0
     },
     {
         ID: 3,
@@ -37,7 +38,7 @@ let totalCashRegisterData = [
         assetTotal: 0,
         amountTotal: 0,
         assetLast: 0,
-        amountLast: 0,
+        amountLast: 0
     },
     {
         ID: 4,
@@ -45,7 +46,7 @@ let totalCashRegisterData = [
         assetTotal: 0,
         amountTotal: 0,
         assetLast: 0,
-        amountLast: 0,
+        amountLast: 0
     },
     {
         ID: 5,
@@ -53,7 +54,7 @@ let totalCashRegisterData = [
         assetTotal: 0,
         amountTotal: 0,
         assetLast: 0,
-        amountLast: 0,
+        amountLast: 0
     },
     {
         ID: 6,
@@ -61,7 +62,7 @@ let totalCashRegisterData = [
         assetTotal: 0,
         amountTotal: 0,
         assetLast: 0,
-        amountLast: 0,
+        amountLast: 0
     },
     {
         ID: 7,
@@ -69,7 +70,7 @@ let totalCashRegisterData = [
         assetTotal: 0,
         amountTotal: 0,
         assetLast: 0,
-        amountLast: 0,
+        amountLast: 0
     },
     {
         ID: 8,
@@ -77,7 +78,7 @@ let totalCashRegisterData = [
         assetTotal: 0,
         amountTotal: 0,
         assetLast: 0,
-        amountLast: 0,
+        amountLast: 0
     },
     {
         ID: 9,
@@ -85,7 +86,7 @@ let totalCashRegisterData = [
         assetTotal: 0,
         amountTotal: 0,
         assetLast: 0,
-        amountLast: 0,
+        amountLast: 0
     },
     {
         ID: 10,
@@ -93,7 +94,7 @@ let totalCashRegisterData = [
         assetTotal: 0,
         amountTotal: 0,
         assetLast: 0,
-        amountLast: 0,
+        amountLast: 0
     },
     {
         ID: 11,
@@ -101,7 +102,7 @@ let totalCashRegisterData = [
         assetTotal: 0,
         amountTotal: 0,
         assetLast: 0,
-        amountLast: 0,
+        amountLast: 0
     },
     {
         ID: 12,
@@ -109,19 +110,18 @@ let totalCashRegisterData = [
         assetTotal: 0,
         amountTotal: 0,
         assetLast: 0,
-        amountLast: 0,
+        amountLast: 0
     },
 ];
-
 // eventListeners
 input.addEventListener("keypress", function (e) {
     if (e.key === "Enter") {
         main();
     }
 });
-
 // default settings
-for (let i = 0; i < checkboxes.length; i++) {
+for (var i = 0; i < checkboxes.length; i++) {
     checkboxes[i].checked = true;
 }
 radioRandom.checked = true;
+
